@@ -12,7 +12,6 @@ Tomcat is a webserver that uses the Java programming language and Java ServerPag
 **HSPC_SubmissionsProgram** is a GUI based application where teams can submit solutions to problems, as well as ask for clarifications for problems.
 
 ## Development
-------
 These projects were created using the IntelliJ IDEA IDE for Java due to the available features.
 Below is a list of what each folder contains.
 * **.idea** - Project settings, used by IntelliJ IDEA. Do not modify.
