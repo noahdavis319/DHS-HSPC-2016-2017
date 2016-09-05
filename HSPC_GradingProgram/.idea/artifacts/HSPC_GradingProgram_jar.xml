@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="HSPC_GradingProgram:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/HSPC_GradingProgram_jar</output-path>
+    <root id="archive" name="HSPC_GradingProgram.jar">
+      <element id="module-output" name="HSPC_GradingProgram" />
+    </root>
+  </artifact>
+</component>
