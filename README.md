@@ -10,3 +10,12 @@ The application then proceeds to update the MySQL database backend on whether or
 Tomcat is a webserver that uses the Java programming language and Java ServerPages to execute server-side code.  Tomcat was chosen for this project as it uses the Java programming language like all of the other applications.
 
 **HSPC_SubmissionsProgram** is a GUI based application where teams can submit solutions to problems, as well as ask for clarifications for problems.
+
+## Development
+------
+These projects were created using the IntelliJ IDEA IDE for Java due to the available features.
+Below is a list of what each folder contains.
+* **.idea** - Project settings, used by IntelliJ IDEA. Do not modify.
+* **out** - Compiled class files and artificats (Jars) can be found here.
+* **src** - Source code as .java files can be found here.
+* **Other files** - Generally all other files are a part of the application, such as a **config.ini** which contains configuration parameters, or a **.iml** file for including libraries.
