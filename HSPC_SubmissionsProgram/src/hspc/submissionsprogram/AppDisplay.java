@@ -106,7 +106,7 @@ class AppDisplay extends JFrame {
 				File file = fileChooser.getSelectedFile();
 				try {
 					CloseableHttpClient httpClient = HttpClients.createDefault();
-					HttpPost uploadFile = new HttpPost("http://localhost:8080/submit");
+					HttpPost uploadFile = new HttpPost(Main.Configuration.get("submit_url"));
 
 					MultipartEntityBuilder builder = MultipartEntityBuilder.create();
 					builder.addTextBody("accountID", Main.accountID, ContentType.TEXT_PLAIN);
