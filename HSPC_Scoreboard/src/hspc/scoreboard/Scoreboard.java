@@ -36,15 +36,15 @@ public class Scoreboard extends HttpServlet {
         try {
             ArrayList<HashMap<String, String>> rs = MySQLQuery.executeQuery("SELECT\n" +
                     "\tA.team AS team,\n" +
-                    "    A.name as team_name,\n" +
-                    "    IFNULL(number_correct_problems, 0) AS number_correct_problems,\n" +
-                    "    IFNULL((number_failed_attempts * 15), 0) AS penalty_time,\n" +
-                    "    IFNULL(correct_data, \"NULL\") AS correct_data,\n" +
-                    "    IFNULL(attempt_data, \"NULL\") AS attempt_data\n" +
+                    "\tA.name as team_name,\n" +
+                    "\tIFNULL(number_correct_problems, 0) AS number_correct_problems,\n" +
+                    "\tIFNULL((number_failed_attempts * 15), 0) AS penalty_time,\n" +
+                    "\tIFNULL(correct_data, \"NULL\") AS correct_data,\n" +
+                    "\tIFNULL(attempt_data, \"NULL\") AS attempt_data\n" +
                     "FROM (\n" +
                     "\tSELECT\n" +
                     "\t\tid AS team,\n" +
-                    "        name\n" +
+                    "\t\tname\n" +
                     "\tFROM\n" +
                     "\t\thspc.teams\n" +
                     ") AS A\n" +
@@ -56,8 +56,8 @@ public class Scoreboard extends HttpServlet {
                     "\t\tSELECT\n" +
                     "\t\t\tteam,\n" +
                     "\t\t\tproblem,\n" +
-                    "            problem_id,\n" +
-                    "            time\n" +
+                    "\t\t\tproblem_id,\n" +
+                    "\t\t\ttime\n" +
                     "\t\tFROM \n" +
                     "\t\t\thspc.submissions\n" +
                     "\t\tWHERE\n" +
@@ -80,7 +80,7 @@ public class Scoreboard extends HttpServlet {
                     "\t\t\tteam,\n" +
                     "\t\t\tproblem,\n" +
                     "\t\t\tCOUNT(*) AS count,\n" +
-                    "            problem_id\n" +
+                    "\t\t\tproblem_id\n" +
                     "\t\tFROM\n" +
                     "\t\t\thspc.submissions\n" +
                     "\t\tWHERE\n" +
@@ -97,8 +97,8 @@ public class Scoreboard extends HttpServlet {
                     "LEFT JOIN (\n" +
                     "\tSELECT\n" +
                     "\t\tteam,\n" +
-                    "        COUNT(*) AS number_correct_problems,\n" +
-                    "        SUM(time) as sum_time_correct\n" +
+                    "\t\tCOUNT(*) AS number_correct_problems,\n" +
+                    "\t\tSUM(time) as sum_time_correct\n" +
                     "\tFROM\n" +
                     "\t\thspc.submissions\n" +
                     "\tWHERE\n" +
@@ -111,7 +111,7 @@ public class Scoreboard extends HttpServlet {
                     "LEFT JOIN (\n" +
                     "\tSELECT\n" +
                     "\t\tteam,\n" +
-                    "        COUNT(*) AS number_failed_attempts\n" +
+                    "\t\tCOUNT(*) AS number_failed_attempts\n" +
                     "\tFROM\n" +
                     "\t\thspc.submissions\n" +
                     "\tWHERE\n" +
@@ -123,8 +123,8 @@ public class Scoreboard extends HttpServlet {
                     "\t(A.team = E.team)\n" +
                     "ORDER BY\n" +
                     "\tnumber_correct_problems DESC,\n" +
-                    "    sum_time_correct ASC,\n" +
-                    "    number_failed_attempts ASC");
+                    "\tsum_time_correct ASC,\n" +
+                    "\tnumber_failed_attempts ASC");
 
             builder.append("<table style=\"width: 100%\">\n" +
                     "\t<tr>\n" +
