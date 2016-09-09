@@ -93,6 +93,8 @@ class JavaProcess {
             data.put("output", outputGobbler.getResponse());
             data.put("error", errorGobbler.getResponse());
 
+            shell.destroyForcibly();
+
             return data;
         } catch (IOException e) {
             Display.AddLine(" - Error occurred while executing Java command. Error Description (IOException): "
