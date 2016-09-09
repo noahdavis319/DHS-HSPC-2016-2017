@@ -17,6 +17,8 @@ import java.security.SecureRandom;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by Noah Davis on 5/6/2016.
@@ -136,6 +138,12 @@ public class UploadServlet extends HttpServlet {
                     } catch (IOException ioe) {
                         System.out.println("Error while creating empty file: " + ioe);
                     }
+
+                    ArrayList<HashMap<String, String>> rs = MySQLQuery.executeQuery("SELECT COUNT(*) as count FROM submissions");
+
+                    PrintWriter output = response.getWriter();
+                    output.println(rs.get(0).get("count"));
+                    output.close();
 
                 } catch (Exception ex) {
                     ex.printStackTrace();

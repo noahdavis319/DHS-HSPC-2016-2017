@@ -15,7 +15,10 @@ import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.sql.*;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -118,6 +121,17 @@ class AppDisplay extends JFrame {
 
 					CloseableHttpResponse response = httpClient.execute(uploadFile);
 					HttpEntity responseEntity = response.getEntity();
+					String inputLine ;
+					BufferedReader br = new BufferedReader(new InputStreamReader(responseEntity.getContent()));
+					try {
+						if ((inputLine = br.readLine()) != null){
+							int rowIndex = Integer.parseInt(inputLine);
+                            new ResultWatcher(rowIndex);
+						}
+						br.close();
+					} catch (IOException ex) {
+						ex.printStackTrace();
+					}
 				} catch (Exception ex) {
 					ex.printStackTrace();
 				}
@@ -237,13 +251,13 @@ class AppDisplay extends JFrame {
 		pane.addTab("Clarifications", clarificationsPanel);
 
 		Timer timer = new Timer();
-		TimerTask myTask = new TimerTask() {
+		TimerTask updateTask = new TimerTask() {
 			@Override
 			public void run() {
 				updateCList(false);
 			}
 		};
-		timer.schedule(myTask, 10000, 10000);
+		timer.schedule(updateTask, 10000, 10000);
 
 		updateCList(false);
 
@@ -331,4 +345,8 @@ class AppDisplay extends JFrame {
 			ex.printStackTrace();
 		}
 	}
+
+	static void displayResult(int code, String problemName) {
+	    new ResultDisplay(code, problemName);
+    }
 }

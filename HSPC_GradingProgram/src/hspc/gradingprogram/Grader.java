@@ -125,11 +125,10 @@ class Grader extends Thread {
                         Display.AddLine(" - Code execution took longer than 30 seconds.");
                         new ResultsHandler(name, 4);
                     } else {
-                        Display.AddLine("\n - Error\n" + executionResults.get("error") + "\n");
+                        Display.AddLine("\n - Error.\n\n" + executionResults.get("error") + "\n");
                         new ResultsHandler(name, 5);
                     }
                     ResultsArchiver.SaveResults(name, executionResults);
-                    Display.AddLine(" - Done.");
                 } catch (Exception x) {
                     x.printStackTrace();
                 }
@@ -137,6 +136,7 @@ class Grader extends Thread {
                 Display.AddLine(" - Compilation error.");
                 new ResultsHandler(name, 2);
             }
+            Display.AddLine(" - Done.");
             end();
         }
     }
