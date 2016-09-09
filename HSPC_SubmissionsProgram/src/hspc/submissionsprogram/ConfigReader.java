@@ -43,7 +43,7 @@ class ConfigReader {
 			InputStream is = getClass().getResourceAsStream("/hspc/submissionsprogram/config.ini");
 			try (BufferedReader br = new BufferedReader(new InputStreamReader(is))) {
 				for (String line; (line = br.readLine()) != null; ) {
-					if (line.length() > 0 && line.charAt(0) != ';' && line.charAt(0) != '[' && line.charAt(0) != ']') {
+					if (line.length() > 0 && line.charAt(0) != ';' && line.trim().charAt(0) != ';' && line.charAt(0) != '[' && line.charAt(0) != ']') {
 						String lineNoComment = line.split(";")[0];
 						configData.put((lineNoComment.substring(0, lineNoComment.indexOf(":"))).trim(), lineNoComment.substring(lineNoComment.indexOf(":") + 1).trim());
 					}
