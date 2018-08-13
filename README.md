@@ -14,7 +14,6 @@ Tomcat is a webserver that uses the Java programming language and Java ServerPag
 ## Development
 These projects were created using the **IntelliJ IDEA** IDE for Java due to the available features.
 Below is a list of what each folder contains.
-* **.idea** - Project settings, used by IntelliJ IDEA. Do not modify.
 * **out** - Compiled class files and artificats (Jars) can be found here.
 * **src** - Source code as .java files can be found here.
 * **Other files** - Generally all other files are a part of the application, such as a **config.ini** which contains configuration parameters, or a **.iml** file for including libraries.
